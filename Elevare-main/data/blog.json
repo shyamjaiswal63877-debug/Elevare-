@@ -1,0 +1,58 @@
+{
+  "articles": [
+    {
+      "icon": "💻",
+      "category": "TECHNOLOGY",
+      "title": "10 Programming Languages to Learn in 2024",
+      "excerpt": "Discover which programming languages are trending and will give you the best career opportunities this year.",
+      "author": "Mike Chen",
+      "date": "March 10, 2024",
+      "url": "#"
+    },
+    {
+      "icon": "🎯",
+      "category": "CAREER TIPS",
+      "title": "How to Ace Your First Technical Interview",
+      "excerpt": "A comprehensive guide to preparing for technical interviews, including common questions and best practices.",
+      "author": "Lisa Wang",
+      "date": "March 8, 2024",
+      "url": "#"
+    },
+    {
+      "icon": "🚀",
+      "category": "EDUCATION",
+      "title": "Online Learning vs Traditional Education: The New Reality",
+      "excerpt": "Comparing the benefits and challenges of online and traditional learning methods in today's world.",
+      "author": "David Kim",
+      "date": "March 5, 2024",
+      "url": "#"
+    },
+    {
+      "icon": "📊",
+      "category": "INDUSTRY NEWS",
+      "title": "The Rise of AI in Education: What It Means for Students",
+      "excerpt": "Exploring how artificial intelligence is transforming education and what students need to know.",
+      "author": "Emily Rodriguez",
+      "date": "March 3, 2024",
+      "url": "#"
+    },
+    {
+      "icon": "🤝",
+      "category": "CAREER TIPS",
+      "title": "Building Your Professional Network: A Beginner's Guide",
+      "excerpt": "Learn effective strategies for networking and building meaningful professional relationships.",
+      "author": "James Miller",
+      "date": "February 28, 2024",
+      "url": "#"
+    },
+    {
+      "icon": "🎨",
+      "category": "TECHNOLOGY",
+      "title": "Design Trends 2024: What's Shaping the Future",
+      "excerpt": "A look at the design trends that will dominate user interfaces and digital experiences this year.",
+      "author": "Anna Taylor",
+      "date": "February 25, 2024",
+      "url": "#"
+    }
+  ]
+}

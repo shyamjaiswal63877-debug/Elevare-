@@ -1,0 +1,52 @@
+{
+  "courses": [
+    {
+      "icon": "💻",
+      "title": "Web Development",
+      "description": "Learn modern web development with HTML, CSS, JavaScript and frameworks",
+      "duration": "12 weeks",
+      "level": "Beginner",
+      "enrollUrl": "#"
+    },
+    {
+      "icon": "📱",
+      "title": "Mobile Development",
+      "description": "Build native and cross-platform mobile applications",
+      "duration": "16 weeks",
+      "level": "Intermediate",
+      "enrollUrl": "#"
+    },
+    {
+      "icon": "🤖",
+      "title": "AI & Machine Learning",
+      "description": "Master artificial intelligence and machine learning concepts",
+      "duration": "20 weeks",
+      "level": "Advanced",
+      "enrollUrl": "#"
+    },
+    {
+      "icon": "📊",
+      "title": "Data Science",
+      "description": "Analyze data and create insights using modern tools",
+      "duration": "18 weeks",
+      "level": "Intermediate",
+      "enrollUrl": "#"
+    },
+    {
+      "icon": "🎨",
+      "title": "UI/UX Design",
+      "description": "Create beautiful and user-friendly digital experiences",
+      "duration": "14 weeks",
+      "level": "Beginner",
+      "enrollUrl": "#"
+    },
+    {
+      "icon": "🔐",
+      "title": "Cybersecurity",
+      "description": "Protect systems and data from digital threats",
+      "duration": "22 weeks",
+      "level": "Advanced",
+      "enrollUrl": "#"
+    }
+  ]
+}

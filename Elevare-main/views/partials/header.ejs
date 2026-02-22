@@ -1,0 +1,126 @@
+<!-- Navigation Header Partial -->
+<script>
+    // Check if user is logged in (client-side)
+    const userId = localStorage.getItem('userId');
+    const userName = localStorage.getItem('userName');
+    const isLoggedIn = userId && userName;
+</script>
+
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <div class="header-left">
+            <button class="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">🎓</div>
+                <span class="logo-text">ELEVARE</span>
+            </div>
+        </div>
+        
+        <!-- Auth Section - changes based on login state -->
+        <div class="auth">
+            <a href="/profile" class="user-profile-link" id="profileLink" style="display: none;">
+                <div class="user-avatar">👤</div>
+                <span class="user-name" id="headerUserName"></span>
+            </a>
+            <a href="/signin" class="sign-in" id="signInLink">Sign In</a>
+        </div>
+    </div>
+</header>
+
+<!-- Sidebar Navigation -->
+<aside class="sidebar" aria-hidden="true">
+    <div class="sidebar-header">
+        <div class="logo">
+            <div class="logo-icon">🎓</div>
+            <span class="logo-text">ELEVARE</span>
+        </div>
+        <button class="sidebar-close" aria-label="Close navigation">✕</button>
+    </div>
+    <nav class="nav">
+        <a href="/" class="nav-link" data-page="home">HOME</a>
+        <a href="/courses" class="nav-link" data-page="courses">COURSES</a>
+        <a href="/internships" class="nav-link" data-page="internships">INTERNSHIPS</a>
+        <a href="/mentorship" class="nav-link" data-page="mentorship">MENTORSHIP</a>
+        <a href="/profile" class="nav-link" data-page="profile">PROFILE</a>
+        <a href="#" class="nav-link" id="logoutBtn" style="display: none; color: #ff6b6b; margin-top: 20px;">LOGOUT</a>
+    </nav>
+</aside>
+<div class="sidebar-overlay" tabindex="-1" aria-hidden="true"></div>
+
+<script>
+    // Header authentication state management
+    (function() {
+        const userId = localStorage.getItem('userId');
+        const userName = localStorage.getItem('userName');
+        const isLoggedIn = userId && userName;
+        
+        // Update header auth section
+        if (isLoggedIn) {
+            document.getElementById('profileLink').style.display = 'flex';
+            document.getElementById('headerUserName').textContent = userName;
+            document.getElementById('signInLink').style.display = 'none';
+            document.getElementById('logoutBtn').style.display = 'block';
+        }
+        
+        // Highlight active page based on current path
+        const currentPath = window.location.pathname;
+        const pageMap = {
+            '/': 'home',
+            '/courses': 'courses',
+            '/internships': 'internships',
+            '/mentorship': 'mentorship',
+            '/profile': 'profile'
+        };
+        
+        const currentPage = pageMap[currentPath] || 'home';
+        const activeLink = document.querySelector(`.nav-link[data-page="${currentPage}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+        
+        // Sidebar toggle functionality
+        const body = document.body;
+        const toggle = document.querySelector('.sidebar-toggle');
+        const closeBtn = document.querySelector('.sidebar-close');
+        const overlay = document.querySelector('.sidebar-overlay');
+        
+        function openSidebar() {
+            body.classList.add('sidebar-open');
+            toggle && toggle.setAttribute('aria-expanded', 'true');
+        }
+        
+        function closeSidebar() {
+            body.classList.remove('sidebar-open');
+            toggle && toggle.setAttribute('aria-expanded', 'false');
+        }
+        
+        toggle && toggle.addEventListener('click', function() {
+            if (body.classList.contains('sidebar-open')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        });
+        
+        closeBtn && closeBtn.addEventListener('click', closeSidebar);
+        overlay && overlay.addEventListener('click', closeSidebar);
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeSidebar();
+        });
+        
+        // Handle logout
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('userId');
+                localStorage.removeItem('userName');
+                alert('Logged out successfully!');
+                window.location.href = '/';
+            });
+        }
+    })();
+</script>

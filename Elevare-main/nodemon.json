@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "server.js",
+    "routes/",
+    "data/"
+  ],
+  "ext": "js,json,html,css",
+  "ignore": [
+    "node_modules/",
+    "*.log"
+  ],
+  "delay": "1000"
+}

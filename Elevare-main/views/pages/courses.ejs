@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEVARE - Courses</title>
+    <meta name="description" content="Explore our comprehensive courses designed to elevate your skills">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="courses">
+    <%- include('../partials/header') %>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">COURSES</h1>
+                <p class="page-subtitle">Discover courses designed to elevate your career</p>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="courseSearch" class="search-input" placeholder="🔍 Search courses by title, level, or description...">
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Grid Section -->
+        <section class="courses-section">
+            <div class="container">
+                <div class="courses-grid" id="courses-grid"></div>
+                
+                <!-- Template used to render a course from JSON -->
+                <template id="course-card-template">
+                    <div class="course-card">
+                        <div class="course-icon" data-field="icon">�</div>
+                        <span class="enrolled-badge" data-field="enrolled-badge" style="display:none;">✓ Enrolled</span>
+                        <h3 class="course-title" data-field="title">Course Title</h3>
+                        <p class="course-description" data-field="description">Description</p>
+                        <div class="course-meta">
+                            <span class="course-duration" data-field="duration">Duration</span>
+                            <span class="course-level" data-field="level">Level</span>
+                        </div>
+                        <a class="btn-primary" data-field="enroll" href="#">ENROLL NOW</a>
+                    </div>
+                </template>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+    // Fetch courses data from MongoDB and render cards with search functionality
+    (function(){
+        var grid = document.getElementById('courses-grid');
+        var tpl = document.getElementById('course-card-template');
+        var searchInput = document.getElementById('courseSearch');
+        var allCourses = [];
+        var enrolledCourseIds = [];
+        
+        if (!grid || !tpl) return;
+        
+        // Get user's enrolled courses
+        var userId = localStorage.getItem('userId');
+        var enrolledPromise = userId 
+            ? fetch('/api/users/' + userId)
+                .then(function(res){ return res.json(); })
+                .then(function(data){ 
+                    var user = data.data && data.data.user;
+                    enrolledCourseIds = user && user.enrolledCourses 
+                        ? user.enrolledCourses.map(function(c){ return c.courseId; })
+                        : [];
+                })
+                .catch(function(err){ 
+                    console.error('Failed to load user data', err);
+                })
+            : Promise.resolve();
+        
+        // Fetch courses from MongoDB API
+        enrolledPromise.then(function(){
+            return fetch('/api/courses');
+        })
+            .then(function(res){ return res.json(); })
+            .then(function(data){
+                allCourses = data.courses || [];
+                renderCourses(allCourses);
+            })
+            .catch(function(err){ 
+                console.error('Failed to load courses', err);
+                grid.innerHTML = '<p style="text-align:center;padding:40px;color:#6c757d;">Failed to load courses. Please try again later.</p>';
+            });
+        
+        // Render courses function
+        function renderCourses(courses) {
+            var frag = document.createDocumentFragment();
+            
+            if (courses.length === 0) {
+                grid.innerHTML = '<p style="text-align:center;padding:40px;color:#6c757d;">No courses found matching your search.</p>';
+                return;
+            }
+            
+            courses.forEach(function(c){
+                var node = tpl.content.firstElementChild.cloneNode(true);
+                var icon = node.querySelector('[data-field="icon"]');
+                var title = node.querySelector('[data-field="title"]');
+                var desc = node.querySelector('[data-field="description"]');
+                var duration = node.querySelector('[data-field="duration"]');
+                var level = node.querySelector('[data-field="level"]');
+                var enroll = node.querySelector('[data-field="enroll"]');
+                var badge = node.querySelector('[data-field="enrolled-badge"]');
+                
+                var isEnrolled = enrolledCourseIds.indexOf(c._id) !== -1;
+                
+                if (icon) icon.textContent = c.icon || '💼';
+                if (title) title.textContent = c.title || '';
+                if (desc) desc.textContent = c.description || '';
+                if (duration) duration.textContent = c.duration || '';
+                if (level) level.textContent = c.level || '';
+                
+                if (isEnrolled) {
+                    if (badge) badge.style.display = 'block';
+                    if (enroll) {
+                        enroll.textContent = 'CONTINUE LEARNING';
+                        enroll.classList.add('enrolled');
+                        enroll.href = 'profile.html';
+                    }
+                    node.classList.add('enrolled');
+                } else {
+                    if (enroll) {
+                        enroll.href = c.enrollUrl || '#';
+                        enroll.setAttribute('data-course-id', c._id);
+                        enroll.setAttribute('data-course-title', c.title);
+                        enroll.addEventListener('click', handleEnrollClick);
+                    }
+                }
+                
+                frag.appendChild(node);
+            });
+            
+            grid.innerHTML = '';
+            grid.appendChild(frag);
+        }
+        
+        // Handle enrollment
+        function handleEnrollClick(e) {
+            e.preventDefault();
+            
+            if (!userId) {
+                alert('Please sign in to enroll in courses.');
+                window.location.href = 'signin.html';
+                return;
+            }
+            
+            var courseId = this.getAttribute('data-course-id');
+            var courseTitle = this.getAttribute('data-course-title');
+            
+            fetch('/api/users/' + userId + '/enroll', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ courseId: courseId, courseTitle: courseTitle })
+            })
+            .then(function(res){ return res.json(); })
+            .then(function(data){
+                if (data.success) {
+                    alert('Successfully enrolled in ' + courseTitle + '!');
+                    location.reload(); // Refresh to show updated enrollment status
+                } else {
+                    alert(data.message || 'Failed to enroll. Please try again.');
+                }
+            })
+            .catch(function(err){
+                console.error('Enrollment error:', err);
+                alert('Failed to enroll. Please try again.');
+            });
+        }
+        
+        // Search functionality
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                var query = e.target.value.toLowerCase().trim();
+                
+                if (query === '') {
+                    renderCourses(allCourses);
+                    return;
+                }
+                
+                var filtered = allCourses.filter(function(course) {
+                    return (course.title && course.title.toLowerCase().includes(query)) ||
+                           (course.description && course.description.toLowerCase().includes(query)) ||
+                           (course.level && course.level.toLowerCase().includes(query));
+                });
+                
+                renderCourses(filtered);
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

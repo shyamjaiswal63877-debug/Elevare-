@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEVARE - Mentorship</title>
+    <meta name="description" content="Connect with industry experts for personalized guidance and mentorship">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="mentorship">
+    <script src="nav.js"></script>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">MENTORSHIP</h1>
+                <p class="page-subtitle">Get personalized guidance from industry experts</p>
+            </div>
+        </section>
+
+        <!-- Mentorship Benefits -->
+        <section class="benefits-section">
+            <div class="container">
+                <h2 class="section-title">WHY CHOOSE MENTORSHIP?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎯</div>
+                        <h3 class="benefit-title">Personalized Guidance</h3>
+                        <p class="benefit-description">Get tailored advice based on your goals and career path</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🚀</div>
+                        <h3 class="benefit-title">Accelerated Growth</h3>
+                        <p class="benefit-description">Fast-track your career with expert insights and strategies</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🤝</div>
+                        <h3 class="benefit-title">Industry Connections</h3>
+                        <p class="benefit-description">Build valuable relationships within your industry</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Mentors -->
+        <section class="mentors-section">
+            <div class="container">
+                <h2 class="section-title-dark">MEET OUR MENTORS</h2>
+                <div class="mentors-grid">
+                    <div class="mentor-card" 
+                         data-mentor-id="mentor-1"
+                         data-mentor-name="David Kim"
+                         data-mentor-role="Senior Software Engineer at Google"
+                         data-mentor-expertise="JavaScript, React, System Design">
+                        <div class="mentor-avatar">👨‍💻</div>
+                        <h3 class="mentor-name">David Kim</h3>
+                        <p class="mentor-role">Senior Software Engineer at Google</p>
+                        <div class="mentor-expertise">
+                            <span class="expertise-tag">JavaScript</span>
+                            <span class="expertise-tag">React</span>
+                            <span class="expertise-tag">System Design</span>
+                        </div>
+                        <p class="mentor-experience">8+ years experience</p>
+                        <button class="btn-primary book-session-btn">BOOK SESSION</button>
+                    </div>
+
+                    <div class="mentor-card"
+                         data-mentor-id="mentor-2"
+                         data-mentor-name="Lisa Wang"
+                         data-mentor-role="Head of Design at Airbnb"
+                         data-mentor-expertise="UI/UX, Product Design, Design Systems">
+                        <div class="mentor-avatar">👩‍🎨</div>
+                        <h3 class="mentor-name">Lisa Wang</h3>
+                        <p class="mentor-role">Head of Design at Airbnb</p>
+                        <div class="mentor-expertise">
+                            <span class="expertise-tag">UI/UX</span>
+                            <span class="expertise-tag">Product Design</span>
+                            <span class="expertise-tag">Design Systems</span>
+                        </div>
+                        <p class="mentor-experience">12+ years experience</p>
+                        <button class="btn-primary book-session-btn">BOOK SESSION</button>
+                    </div>
+
+                    <div class="mentor-card"
+                         data-mentor-id="mentor-3"
+                         data-mentor-name="James Miller"
+                         data-mentor-role="Marketing Director at Tesla"
+                         data-mentor-expertise="Digital Marketing, Strategy, Analytics">
+                        <div class="mentor-avatar">👨‍💼</div>
+                        <h3 class="mentor-name">James Miller</h3>
+                        <p class="mentor-role">Marketing Director at Tesla</p>
+                        <div class="mentor-expertise">
+                            <span class="expertise-tag">Digital Marketing</span>
+                            <span class="expertise-tag">Strategy</span>
+                            <span class="expertise-tag">Analytics</span>
+                        </div>
+                        <p class="mentor-experience">10+ years experience</p>
+                        <button class="btn-primary book-session-btn">BOOK SESSION</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Book Session Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Book Mentorship Session</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <input type="hidden" id="sessionId" name="sessionId">
+                    <input type="hidden" id="mentorName" name="mentorName">
+                    
+                    <div class="form-group">
+                        <label for="topic">Session Topic *</label>
+                        <input type="text" id="topic" name="topic" placeholder="e.g., Career guidance, Technical interview prep" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="scheduledDate">Preferred Date & Time *</label>
+                        <input type="datetime-local" id="scheduledDate" name="scheduledDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="duration">Duration (minutes) *</label>
+                        <select id="duration" name="duration" required>
+                            <option value="30">30 minutes</option>
+                            <option value="60" selected>60 minutes</option>
+                            <option value="90">90 minutes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Additional Notes (Optional)</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Anything specific you'd like to discuss..."></textarea>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" id="cancelBooking">Cancel</button>
+                        <button type="submit" class="btn-primary">Confirm Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="mentorship.js"></script>
+</body>
+</html>

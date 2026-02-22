@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEVARE - My Profile</title>
+    <meta name="description" content="View and manage your ELEVARE profile, courses, internships, and mentorship sessions">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="profile">
+    <script src="nav.js"></script>
+
+    <!-- Main Content -->
+    <main class="main profile-main">
+        <div class="container">
+            <!-- Profile Header -->
+            <section class="profile-header-section">
+                <div class="profile-header-content">
+                    <div class="profile-avatar-large">
+                        <span class="avatar-icon">👤</span>
+                    </div>
+                    <div class="profile-header-info">
+                        <h1 class="profile-name" id="userName">John Doe</h1>
+                        <p class="profile-type" id="userType">Student - Second Year</p>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="coursesCount">3</span>
+                                <span class="stat-label">Courses</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="internshipsCount">2</span>
+                                <span class="stat-label">Internships</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="sessionsCount">1</span>
+                                <span class="stat-label">Sessions</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-edit-profile">Edit Profile</button>
+                </div>
+            </section>
+
+            <!-- User Information -->
+            <section class="profile-section">
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">About Me</h2>
+                        <button class="btn-edit-small">✏️ Edit</button>
+                    </div>
+                    <div class="profile-info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Full Name:</span>
+                            <span class="info-value" id="fullName">John Doe</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Status:</span>
+                            <span class="info-value" id="userStatus">Student</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Year:</span>
+                            <span class="info-value" id="userYear">Second Year</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Email:</span>
+                            <span class="info-value" id="userEmail">john.doe@example.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Phone:</span>
+                            <span class="info-value" id="userPhone">Not provided</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Location:</span>
+                            <span class="info-value" id="userLocation">Bangalore, India</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enrolled Courses Section -->
+            <section class="profile-section">
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">📚 Enrolled Courses</h2>
+                        <a href="courses.html" class="btn-link">Browse More</a>
+                    </div>
+                    <div class="profile-courses-grid">
+                        <div class="profile-course-card">
+                            <div class="course-card-header">
+                                <div class="course-icon">💻</div>
+                                <span class="course-badge">In Progress</span>
+                            </div>
+                            <h3 class="course-card-title">Web Development Fundamentals</h3>
+                            <p class="course-card-desc">Master HTML, CSS, and JavaScript basics</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                                <span class="progress-text">65% Complete</span>
+                            </div>
+                            <button class="btn-continue">Continue Learning</button>
+                        </div>
+
+                        <div class="profile-course-card">
+                            <div class="course-card-header">
+                                <div class="course-icon">📊</div>
+                                <span class="course-badge completed">Completed</span>
+                            </div>
+                            <h3 class="course-card-title">Data Science Basics</h3>
+                            <p class="course-card-desc">Introduction to Python and data analysis</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill completed" style="width: 100%;"></div>
+                                </div>
+                                <span class="progress-text">100% Complete</span>
+                            </div>
+                            <button class="btn-continue completed">View Certificate</button>
+                        </div>
+
+                        <div class="profile-course-card">
+                            <div class="course-card-header">
+                                <div class="course-icon">🎨</div>
+                                <span class="course-badge">In Progress</span>
+                            </div>
+                            <h3 class="course-card-title">UI/UX Design Principles</h3>
+                            <p class="course-card-desc">Learn modern design techniques</p>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 30%;"></div>
+                                </div>
+                                <span class="progress-text">30% Complete</span>
+                            </div>
+                            <button class="btn-continue">Continue Learning</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Applied Internships Section -->
+            <section class="profile-section">
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">🚀 Applied Internships</h2>
+                        <a href="internships.html" class="btn-link">Find More</a>
+                    </div>
+                    <div class="profile-internships-list">
+                        <div class="internship-item">
+                            <div class="internship-icon">💼</div>
+                            <div class="internship-info">
+                                <h3 class="internship-title">Frontend Developer Intern</h3>
+                                <p class="internship-company">TechCorp Solutions</p>
+                                <p class="internship-details">Remote • 3-6 months • Applied 2 weeks ago</p>
+                            </div>
+                            <span class="status-badge pending">Under Review</span>
+                        </div>
+
+                        <div class="internship-item">
+                            <div class="internship-icon">📱</div>
+                            <div class="internship-info">
+                                <h3 class="internship-title">UI/UX Design Intern</h3>
+                                <p class="internship-company">Creative Studio Inc.</p>
+                                <p class="internship-details">Bangalore • 6 months • Applied 1 month ago</p>
+                            </div>
+                            <span class="status-badge interview">Interview Scheduled</span>
+                        </div>
+
+                        <div class="internship-item">
+                            <div class="internship-icon">💻</div>
+                            <div class="internship-info">
+                                <h3 class="internship-title">Full Stack Developer Intern</h3>
+                                <p class="internship-company">StartupXYZ</p>
+                                <p class="internship-details">Hybrid • 4-6 months • Applied 3 days ago</p>
+                            </div>
+                            <span class="status-badge pending">Pending</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mentorship Sessions Section -->
+            <section class="profile-section">
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">🎯 Mentorship Sessions</h2>
+                        <a href="mentorship.html" class="btn-link">Book Session</a>
+                    </div>
+                    <div class="profile-sessions-list">
+                        <div class="session-item upcoming">
+                            <div class="session-date">
+                                <span class="session-day">18</span>
+                                <span class="session-month">NOV</span>
+                            </div>
+                            <div class="session-info">
+                                <h3 class="session-title">Career Guidance Session</h3>
+                                <p class="session-mentor">👨‍💼 Mentor: Dr. Rajesh Kumar</p>
+                                <p class="session-time">🕐 Tomorrow at 3:00 PM • Duration: 1 hour</p>
+                                <p class="session-topic">Topic: Frontend Development Career Path</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn-session-action primary">Join Meeting</button>
+                                <button class="btn-session-action secondary">Reschedule</button>
+                            </div>
+                        </div>
+
+                        <div class="session-item completed">
+                            <div class="session-date">
+                                <span class="session-day">10</span>
+                                <span class="session-month">NOV</span>
+                            </div>
+                            <div class="session-info">
+                                <h3 class="session-title">Resume Building Workshop</h3>
+                                <p class="session-mentor">👩‍💼 Mentor: Priya Sharma</p>
+                                <p class="session-time">🕐 Last week • Duration: 45 minutes</p>
+                                <p class="session-topic">Topic: Creating an Impactful Resume</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn-session-action completed">Completed</button>
+                                <button class="btn-session-action secondary">View Notes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about-section">
+                    <p class="footer-description">Bridging the gap between academic learning and professional success. Empowering Indian college students with skills, opportunities, and mentorship.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <span>support@eelevare.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>Bangalore, Karnataka, India</span>
+                        </div>
+                    </div>
+                    <div class="social-media">
+                        <span class="social-icon">📘</span>
+                        <span class="social-icon">🐦</span>
+                        <span class="social-icon">📷</span>
+                        <span class="social-icon">💼</span>
+                        <span class="social-icon">📺</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="mentorship.html">Mentorship</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Popular Courses</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Data Science</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Mobile Development</a></li>
+                        <li><a href="#">Content Writing</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="#">Business Analytics</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Opportunities</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Internships</a></li>
+                        <li><a href="#">Gig Work</a></li>
+                        <li><a href="#">Part-time Jobs</a></li>
+                        <li><a href="#">Remote Work</a></li>
+                        <li><a href="#">Freelancing</a></li>
+                        <li><a href="#">Project Work</a></li>
+                        <li><a href="#">Mentorship</a></li>
+                        <li><a href="#">Networking</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                        <li><a href="#">Technical Support</a></li>
+                        <li><a href="#">Report Issue</a></li>
+                        <li><a href="#">Feature Request</a></li>
+                        <li><a href="#">Status Page</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">Edit Profile</h2>
+                <button class="modal-close" id="closeModal">✕</button>
+            </div>
+            <form class="modal-form" id="editProfileForm">
+                <div class="form-group">
+                    <label for="editName" class="form-label">Full Name</label>
+                    <input type="text" id="editName" name="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editUserType" class="form-label">Status</label>
+                    <select id="editUserType" name="userType" class="form-input" required>
+                        <option value="Student">Student</option>
+                        <option value="Professional">Professional</option>
+                        <option value="Educator">Educator</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editYear" class="form-label">Year</label>
+                    <select id="editYear" name="year" class="form-input">
+                        <option value="N/A">N/A</option>
+                        <option value="First Year">First Year</option>
+                        <option value="Second Year">Second Year</option>
+                        <option value="Third Year">Third Year</option>
+                        <option value="Fourth Year">Fourth Year</option>
+                        <option value="Graduate">Graduate</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editPhone" class="form-label">Phone Number</label>
+                    <input type="tel" id="editPhone" name="phone" class="form-input" placeholder="+91 98765 43210">
+                </div>
+                
+                <div class="form-group">
+                    <label for="editLocation" class="form-label">Location</label>
+                    <input type="text" id="editLocation" name="location" class="form-input" placeholder="City, Country">
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelEdit">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Page Script -->
+    <script src="profile.js"></script>
+</body>
+</html>

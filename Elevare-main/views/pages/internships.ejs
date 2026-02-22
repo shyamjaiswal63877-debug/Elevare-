@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEVARE - Internships</title>
+    <meta name="description" content="Find exciting internship opportunities to kickstart your career">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="internships">
+    <%- include('../partials/header') %>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">INTERNSHIPS</h1>
+                <p class="page-subtitle">Gain real-world experience with top companies</p>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="internshipSearch" class="search-input" placeholder="🔍 Search internships by title, company, or location...">
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="container">
+                <div class="filter-tabs">
+                    <button class="filter-tab active">ALL</button>
+                    <button class="filter-tab">TECHNOLOGY</button>
+                    <button class="filter-tab">MARKETING</button>
+                    <button class="filter-tab">DESIGN</button>
+                    <button class="filter-tab">BUSINESS</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internships List -->
+        <section class="internships-section">
+            <div class="container">
+                <div class="internship-list"></div>
+                
+                <!-- Template used by JS to render cards (simpler than building with createElement) -->
+                <template id="internship-card-template">
+                    <div class="internship-item" data-category="ALL">
+                        <div class="internship-content">
+                            <div class="internship-header">
+                                <div class="internship-icon" data-field="icon">💼</div>
+                                <div class="internship-info">
+                                    <h3 class="internship-title" data-field="title">Title</h3>
+                                    <p class="internship-company" data-field="company">Company</p>
+                                    <p class="internship-location" data-field="location">Location</p>
+                                </div>
+                            </div>
+                            <p class="internship-description" data-field="description">Description</p>
+                            <div class="internship-tags" data-field="tags">
+                                <!-- tags injected here -->
+                            </div>
+                        </div>
+                        <div class="internship-actions">
+                            <a class="btn-primary" data-field="apply" href="#" target="_blank" rel="noopener noreferrer">APPLY NOW</a>
+                            <button class="btn-secondary" type="button">SAVE</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+    </main>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Apply for Internship</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="applicationForm">
+                    <input type="hidden" id="internshipId" name="internshipId">
+                    <input type="hidden" id="internshipTitle" name="internshipTitle">
+                    <input type="hidden" id="internshipCompany" name="internshipCompany">
+                    
+                    <div class="form-group">
+                        <label for="applicantName">Full Name *</label>
+                        <input type="text" id="applicantName" name="applicantName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="applicantEmail">Email *</label>
+                        <input type="email" id="applicantEmail" name="applicantEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="applicantPhone">Phone Number *</label>
+                        <input type="tel" id="applicantPhone" name="applicantPhone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="coverLetter">Cover Letter *</label>
+                        <textarea id="coverLetter" name="coverLetter" rows="6" placeholder="Tell us why you're interested in this internship..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="resume">Resume (PDF or Word) - Optional</label>
+                        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+                        <small style="color: #666; font-size: 12px;">Note: File upload feature coming soon. For now, mention resume details in cover letter.</small>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" id="cancelApplication">Cancel</button>
+                        <button type="submit" class="btn-primary">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- OOP internships logic extracted to external file for clarity -->
+    <script src="internships.js"></script>
+</body>
+</html>
